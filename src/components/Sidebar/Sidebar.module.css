@@ -1,23 +1,30 @@
 
-.sidebar{
+.sidebar {
     width: 30%;
     border: 1px solid rgb(156, 156, 197);
     border-radius: 5px;
 }
-.link{
-  margin: 5px 0;
+
+.link {
+    margin: 5px 0;
 }
-.link:last-child{
-  margin-top: 40px;
+
+.link:last-child {
+    margin-top: 40px;
 }
-.item{
-  margin: 5px 0;
-  color: rgb(34, 94, 155);
-  font-size: 22px;
+
+.inactive {
+    margin: 5px 0;
+    color: rgb(34, 94, 155);
+    font-size: 22px;
 }
-.item:hover{
-  text-decoration: underline;
+
+.link a:hover {
+    text-decoration: underline;
 }
-.active{
-  color: blue;
+
+.active {
+    color: blue;
+    margin: 5px 0;
+    font-size: 22px;
 }
