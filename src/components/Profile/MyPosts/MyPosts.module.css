@@ -34,3 +34,9 @@
     width: 22px;
     height: 22px;
 }
+.kolLikes{
+    color: green;
+}
+.kolDislikes{
+    color: red;
+}

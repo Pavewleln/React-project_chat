@@ -1,0 +1,9 @@
+.top{
+    margin-bottom: 10px;
+}
+.top img{
+    width: 100%;
+    height: 180px;
+    filter: blur(1px);
+    border-radius: 5px;
+}

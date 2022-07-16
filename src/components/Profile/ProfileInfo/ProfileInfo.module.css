@@ -1,0 +1,21 @@
+.profile{
+    margin-top: 5px;
+    display: flex;
+  }
+  .avatar{
+    margin-left: 10px;
+    width: 100px;
+    height: 100px;
+  }
+  .avatar img{
+    width: 100px;
+    height: auto;
+    margin-right: 30px;
+  }
+  .description{
+    font-size: 18px;
+  }
+  .name{
+    font-size: 22px;
+    margin-left: 40px;
+  }
