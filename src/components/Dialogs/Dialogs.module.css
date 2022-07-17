@@ -31,9 +31,44 @@
 
 .message {
     width: 78%;
+    position: relative;
+}
+
+.message ul{
+    overflow-y: auto;
 }
 
 .message_item {
     margin: 20px 0;
     font-size: 18px;
+}
+.sendMessages{
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 5px;
+    width: 97%;
+}
+.sendMessages textarea{
+    width: 85%;
+    resize: none;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid aqua;
+}
+.sendMessages textarea::-webkit-scrollbar {
+    height: 5px;
+}
+.sendMessages textarea::-webkit-scrollbar-thumb{
+    background: rgb(156, 156, 197);
+    border-radius: 10px;
+
+}
+.sendMessages button{
+    width: 11%;
+    background: aqua;
+    border-radius: 5px;
+    border:1px solid blue;
+    cursor: pointer;
 }

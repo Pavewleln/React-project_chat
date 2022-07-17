@@ -4,16 +4,22 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileBackground from './ProfileBackground/ProfileBackground';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = () =>{
+const Profile = (props) =>{
 
-    let posts =[
-        {id: 1, message:"Привет! Я зарегистрировался в новом крутом Мессенджере! Называется НеВКонтакте. Очень креативно и необычно. Никогда такого не видел", likes: '23', dislikes:'3'},
-        {id: 2, message:"Я не сказал самое главное. Знаете кто создал это приложение на React?", likes:'16', dislikes:'13'},
-        {id: 3, message:"Я", likes:'100', dislikes: '0'}
-    ]
+    let postsElements = props.state.posts.map((p) => <MyPosts key={p.id} message={p.message} likes={p.likes} dislikes={p.dislikes}/>)
 
-    let postsElements = posts.map(p => <MyPosts id={p.id} message={p.message} likes={p.likes} dislikes={p.dislikes}/>)
+    let OnButtonPost = () => {
+        let text = NewPostMessage.current.value;
+        props.addPost(text);
+        NewPostMessage.current.value = '';
+    };
 
+    let NewPostMessage = React.createRef();
+
+    let onPostChange = () =>{
+        let text = NewPostMessage.current.value;
+        props.updateNewPostText(text);
+    }
 
     return(
         <div className={s.content}>
@@ -23,8 +29,8 @@ const Profile = () =>{
             <div className={s.post}>
               <h3 className={s.title}>Мои посты</h3>
               <div className={s.container}>
-                <textarea placeholder='Что у тебя нового?'></textarea>
-                <button className={s.send}>Отправить</button>
+                <textarea placeholder='Что у тебя нового?' onChange={onPostChange} ref={NewPostMessage} value={props.newPostText}/>
+                <button className={s.send} onClick={OnButtonPost}>Отправить</button>
               </div>
                 {postsElements}
             </div>
