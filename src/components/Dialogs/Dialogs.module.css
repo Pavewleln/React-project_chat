@@ -34,13 +34,10 @@
     position: relative;
 }
 
-.message ul{
-    overflow-y: auto;
-}
-
 .message_item {
-    margin: 20px 0;
-    font-size: 18px;
+    font-size: 14px;
+    margin: 15px 5px;
+    width: 90%;
 }
 .sendMessages{
     padding: 0 10px;
@@ -59,6 +56,8 @@
 }
 .sendMessages textarea::-webkit-scrollbar {
     height: 5px;
+    width: 5px;
+    cursor: pointer;
 }
 .sendMessages textarea::-webkit-scrollbar-thumb{
     background: rgb(156, 156, 197);

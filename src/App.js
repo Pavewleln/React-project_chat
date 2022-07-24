@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import Profile from './components/Profile/Profile';
 import Sidebar from './components/Sidebar/Sidebar';
-import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 
@@ -20,19 +21,24 @@ const App = (props) => {
                 <main className='main'>
                     <Sidebar/>
                     <Routes>
-                        <Route path='/' element={<Profile
-                            state={props.state.profilePage}
-                            addPost={props.addPost}
-                            newPostText={props.state.profilePage.newPostText}
-                            updateNewPostText={props.updateNewPostText}/>}/>
-                        <Route path='/Profile' element={<Profile
-                            state={props.state.profilePage}
-                            addPost={props.addPost}
-                            newPostText={props.state.profilePage.newPostText}
-                            updateNewPostText={props.updateNewPostText}/>}/>
-                        <Route path='/Dialogs' element={<Dialogs state={props.state.dialogsPage}/>}/>
+                        <Route path='/' element={<ProfileContainer />}/>
+                        <Route path='/Profile' element={<ProfileContainer/>}/>
+                        {/*<Route path='/' element={<Profile*/}
+                        {/*    posts={props.state.profilePage.posts}*/}
+                        {/*    newPostText={props.state.profilePage.newPostText}*/}
+                        {/*    dispatch={props.dispatch}/>}/>*/}
+                        {/*<Route path='/Profile' element={ <Profile*/}
+                        {/*    posts={props.state.profilePage.posts}*/}
+                        {/*    newPostText={props.state.profilePage.newPostText}*/}
+                        {/*    dispatch={props.dispatch}/>}/>*/}
+                        <Route path='/Dialogs' element={<DialogsContainer store={props.store}/>}/>
+                        {/*<Route path='/Dialogs' element={<Dialogs*/}
+                        {/*    state={props.state.dialogsPage}*/}
+                        {/*    newMessage={props.state.dialogsPage.newMessage}*/}
+                        {/*    dispatch={props.dispatch}/>}/>*/}
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
+                        <Route path='/Users' element={<UsersContainer store={props.store}/>}/>
                         <Route path='/Settings' element={<Settings/>}/>
                     </Routes>
                 </main>

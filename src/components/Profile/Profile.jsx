@@ -1,20 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import s from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileBackground from './ProfileBackground/ProfileBackground';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) =>{
-
-    let postsElements = props.state.posts.map((p) => <MyPosts key={p.id} message={p.message} likes={p.likes} dislikes={p.dislikes}/>)
-
-    let OnButtonPost = () => {
-        let text = NewPostMessage.current.value;
-        props.addPost(text);
-        NewPostMessage.current.value = '';
-    };
+    let postsElements = props.posts.map((p) => <MyPosts key={p.id} message={p.message} likes={p.likes} dislikes={p.dislikes}/>)
 
     let NewPostMessage = React.createRef();
+
+    let onAddPost = () => {
+        props.addPost();
+    };
 
     let onPostChange = () =>{
         let text = NewPostMessage.current.value;
@@ -29,8 +26,12 @@ const Profile = (props) =>{
             <div className={s.post}>
               <h3 className={s.title}>Мои посты</h3>
               <div className={s.container}>
-                <textarea placeholder='Что у тебя нового?' onChange={onPostChange} ref={NewPostMessage} value={props.newPostText}/>
-                <button className={s.send} onClick={OnButtonPost}>Отправить</button>
+                <textarea
+                    placeholder='Что у тебя нового?'
+                    onChange={onPostChange}
+                    ref={NewPostMessage}
+                    value={props.newPostText}/>
+                <button className={s.send} onClick={onAddPost}>Отправить</button>
               </div>
                 {postsElements}
             </div>
