@@ -31,14 +31,14 @@ const App = (props) => {
                         {/*    posts={props.state.profilePage.posts}*/}
                         {/*    newPostText={props.state.profilePage.newPostText}*/}
                         {/*    dispatch={props.dispatch}/>}/>*/}
-                        <Route path='/Dialogs' element={<DialogsContainer store={props.store}/>}/>
+                        <Route path='/Dialogs' element={<DialogsContainer />}/>
                         {/*<Route path='/Dialogs' element={<Dialogs*/}
                         {/*    state={props.state.dialogsPage}*/}
                         {/*    newMessage={props.state.dialogsPage.newMessage}*/}
                         {/*    dispatch={props.dispatch}/>}/>*/}
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
-                        <Route path='/Users' element={<UsersContainer store={props.store}/>}/>
+                        <Route path='/Users' element={<UsersContainer/>}/>
                         <Route path='/Settings' element={<Settings/>}/>
                     </Routes>
                 </main>
