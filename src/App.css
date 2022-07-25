@@ -8,11 +8,3 @@
   display: flex;
   justify-content: space-between;
 }
-body::-webkit-scrollbar {
-  height: 30px;
-}
-body::-webkit-scrollbar-thumb{
-  background: rgb(156, 156, 197);
-  border-radius: 10px;
-
-}
