@@ -22,7 +22,7 @@ const App = (props) => {
                     <Sidebar/>
                     <Routes>
                         <Route path='/' element={<ProfileContainer />}/>
-                        <Route path='/Profile' element={<ProfileContainer/>}/>
+                        <Route path='/profile/*' element={<ProfileContainer/>}/>
                         {/*<Route path='/' element={<Profile*/}
                         {/*    posts={props.state.profilePage.posts}*/}
                         {/*    newPostText={props.state.profilePage.newPostText}*/}
@@ -31,15 +31,15 @@ const App = (props) => {
                         {/*    posts={props.state.profilePage.posts}*/}
                         {/*    newPostText={props.state.profilePage.newPostText}*/}
                         {/*    dispatch={props.dispatch}/>}/>*/}
-                        <Route path='/Dialogs' element={<DialogsContainer />}/>
+                        <Route path='/dialogs' element={<DialogsContainer />}/>
                         {/*<Route path='/Dialogs' element={<Dialogs*/}
                         {/*    state={props.state.dialogsPage}*/}
                         {/*    newMessage={props.state.dialogsPage.newMessage}*/}
                         {/*    dispatch={props.dispatch}/>}/>*/}
-                        <Route path='/News' element={<News/>}/>
+                        <Route path='/news' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
-                        <Route path='/Users' element={<UsersContainer/>}/>
-                        <Route path='/Settings' element={<Settings/>}/>
+                        <Route path='/users' element={<UsersContainer/>}/>
+                        <Route path='/settings' element={<Settings/>}/>
                     </Routes>
                 </main>
             </div>

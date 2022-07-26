@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AddMessageActiveCreator, UpdateNewMessage} from "../../redux/dialogs-reducer";
+import {addPost, updateNewMessage} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
@@ -39,19 +39,22 @@ let mapStateToProps = (state) =>{
 
     }
 }
+//
+// let mapDispatchToProps = (dispatch) =>{
+//     return{
+//         addPost: () =>{
+//             dispatch(AddMessageActiveCreator())
+//         },
+//         updateNewMessage: (text) =>{
+//             let action = UpdateNewMessage(text)
+//             dispatch(action)
+//         }
+//     }
+// }
 
-let mapDispatchToProps = (dispatch) =>{
-    return{
-        addPost: () =>{
-            dispatch(AddMessageActiveCreator())
-        },
-        updateNewMessage: (text) =>{
-            let action = UpdateNewMessage(text)
-            dispatch(action)
-        }
-    }
-}
 
-
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const DialogsContainer = connect(mapStateToProps, {
+    addPost,
+    updateNewMessage
+})(Dialogs);
 export default DialogsContainer;
