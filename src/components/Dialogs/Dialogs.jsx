@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {AddMessageActiveCreator, UpdateNewMessage} from "../../redux/dialogs-reducer";
 
 const DialogItem = (props) =>{
-    let path = '/Dialogs/' + props.id;
+    let path = '/dialogs/' + props.id;
     return(
         <li className={s.item}><NavLink to={path}>{props.name}</NavLink></li>
     );

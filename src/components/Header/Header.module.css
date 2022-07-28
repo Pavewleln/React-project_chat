@@ -6,13 +6,27 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  justify-content: space-between;
 }
-h1{
+.headerBlock h1{
   color: rgb(34, 34, 116);
 }
-.header >img{
+.headerBlock{
+  display: flex;
+}
+.headerBlock >img{
   width: 70px;
   height: 70px;
   margin-right: 10px;
   margin-left: 20px;
+}
+.loginBlock{
+  font-size: 22px;
+  padding-right: 20px;
+}
+.item{
+  color: white;
+}
+.item:hover{
+  text-decoration: underline;
 }

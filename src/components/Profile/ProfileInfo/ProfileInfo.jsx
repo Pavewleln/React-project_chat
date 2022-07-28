@@ -13,10 +13,18 @@ const ProfileInfo = (props) =>{
                 </div>
                 <div className={s.data}>
                   <ul>
-                    <li>Дата рождения:{props.data}</li>
-                    <li>Город: {props.city}</li>
-                    <li>Образование: {props.education}</li>
-                    <li>Хобби: {props.hobby}</li>
+                    <li>Контакты</li>
+                    <li>Facebook: {props.facebook}</li>
+                    <li>website: {props.website}</li>
+                    <li>vk: {props.vk}</li>
+                    <li>twitter: {props.twitter}</li>
+                    <li>instagram: {props.instagram}</li>
+                    <li>youtube: {props.youtube}</li>
+                    <li>github: {props.github}</li>
+                    <li>mainLink: {props.mainLink}</li>
+                    <li>status: {props.status}</li>
+                    <li>Работа: {props.lookingForAJob}</li>
+                    <li>Описание: {props.lookingForAJobDescription}</li>
                   </ul>
                 </div>
               </div>
