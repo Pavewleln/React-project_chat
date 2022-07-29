@@ -1,7 +1,7 @@
 import {instance} from "./instance";
 
 export const UsersApi = {
-    getUsers(currentPage, pageSize) {
+    getUsersApi(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
                 return response.data

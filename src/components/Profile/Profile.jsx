@@ -4,6 +4,7 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileBackground from './ProfileBackground/ProfileBackground';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Preloader from "../common/preloader";
+import {Navigate} from "react-router-dom";
 
 const Profile = (props) => {
     let postsElements = props.posts.map((p) => <MyPosts key={p.id} message={p.message} likes={p.likes}

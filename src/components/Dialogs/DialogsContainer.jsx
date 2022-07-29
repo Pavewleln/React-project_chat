@@ -2,59 +2,20 @@ import React, {Component} from 'react';
 import {addPost, updateNewMessage} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
-// const DialogsContainer = (props) => {
-//
-//     return (
-//         <storeContext.Consumer>
-//             {(store) =>{
-//                 let state = store.getState();
-//                 let addPost = () => {
-//                     store.dispatch(AddMessageActiveCreator())
-//                 };
-//
-//                 const messageChange = (text) =>{
-//                     let action = UpdateNewMessage(text)
-//                     store.dispatch(action)
-//                 };
-//                 return <Dialogs
-//                     updateNewMessage={messageChange}
-//                     addPost={addPost}
-//                     dialogsName={state.dialogsPage.dialogsName}
-//                     dialogsMessage={state.dialogsPage.dialogsMessage}
-//                     newPostText={state.dialogsPage.newMessage}
-//
-//             />}
-//         }
-//
-//         </storeContext.Consumer>
-//     );
-// };
-
-let mapStateToProps = (state) =>{
+let mapStateToProps = (state) => {
     return {
         dialogsName: state.dialogsPage.dialogsName,
         dialogsMessage: state.dialogsPage.dialogsMessage,
         newPostText: state.dialogsPage.newMessage,
-
     }
 }
-//
-// let mapDispatchToProps = (dispatch) =>{
-//     return{
-//         addPost: () =>{
-//             dispatch(AddMessageActiveCreator())
-//         },
-//         updateNewMessage: (text) =>{
-//             let action = UpdateNewMessage(text)
-//             dispatch(action)
-//         }
-//     }
-// }
 
 
-const DialogsContainer = connect(mapStateToProps, {
-    addPost,
-    updateNewMessage
-})(Dialogs);
-export default DialogsContainer;
+export default compose(connect(mapStateToProps, {
+        addPost,
+        updateNewMessage
+    }),
+    withAuthRedirect)(Dialogs);
