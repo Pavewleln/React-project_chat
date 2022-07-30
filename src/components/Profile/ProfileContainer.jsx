@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    addPost, profileInfoThunk, setUserProfile, updateNewPostText,
+    addPost, getStatus, profileInfoThunk, setUserProfile, updateNewPostText, updateStatus,
 } from "../../redux/profile-reducer";
 import {connect} from "react-redux";
 import Profile from "./Profile";
@@ -16,7 +16,8 @@ class ProfileComponent extends React.Component {
         if (!userId) {
             userId = 25097;
         }
-        this.props.profileInfoThunk(userId)
+        this.props.profileInfoThunk(userId);
+        this.props.getStatus(userId);
     }
 
     render() {
@@ -27,6 +28,8 @@ class ProfileComponent extends React.Component {
             posts={this.props.posts}
             newPostText={this.props.newPostText}
             profile={this.props.profile}
+            status={this.props.status}
+            updateStatus={this.props.updateStatus}
         />);
     }
 
@@ -34,12 +37,15 @@ class ProfileComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.profilePage.posts, newPostText: state.profilePage.newPostText, profile: state.profilePage.profile
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText,
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {updateNewPostText, addPost, setUserProfile, profileInfoThunk}),
-        withRouter,
-        withAuthRedirect,
-    )(ProfileComponent);
+    connect(mapStateToProps, {updateNewPostText, addPost, setUserProfile, profileInfoThunk, getStatus, updateStatus}),
+    withRouter,
+    withAuthRedirect,
+)(ProfileComponent);

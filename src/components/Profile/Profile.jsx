@@ -5,6 +5,7 @@ import ProfileBackground from './ProfileBackground/ProfileBackground';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Preloader from "../common/preloader";
 import {Navigate} from "react-router-dom";
+import {updateStatus} from "../../redux/profile-reducer";
 
 const Profile = (props) => {
     let postsElements = props.posts.map((p) => <MyPosts key={p.id} message={p.message} likes={p.likes}
@@ -26,7 +27,6 @@ const Profile = (props) => {
             <Preloader/>
         );
     }
-
     return (
         <div className={s.content}>
             <ProfileBackground
@@ -42,10 +42,12 @@ const Profile = (props) => {
                              youtube={props.profile.contacts.youtube}
                              github={props.profile.contacts.github}
                              mainLink={props.profile.contacts.mainLink}
-                             status={props.profile.aboutMe}
                              lookingForAJob={props.lookingForAJob ? "Не ищу работы" : "Ищу работу"}
                              lookingForAJobDescription={props.profile.lookingForAJobDescription}
-                             srcImg={props.profile.photos.large}></ProfileInfo>
+                             srcImg={props.profile.photos.large}
+                             status={props.status}
+                             updateStatus={props.updateStatus}
+                ></ProfileInfo>
                 <div className={s.post}>
                     <h3 className={s.title}>Мои посты</h3>
                     <div className={s.container}>

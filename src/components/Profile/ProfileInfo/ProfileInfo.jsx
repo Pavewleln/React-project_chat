@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import s from './ProfileInfo.module.css';
-
+import Status from "./Status/status";
 const ProfileInfo = (props) =>{
     return(
         <div className={s.profile}>
@@ -22,12 +22,12 @@ const ProfileInfo = (props) =>{
                     <li>youtube: {props.youtube}</li>
                     <li>github: {props.github}</li>
                     <li>mainLink: {props.mainLink}</li>
-                    <li>status: {props.status}</li>
                     <li>Работа: {props.lookingForAJob}</li>
                     <li>Описание: {props.lookingForAJobDescription}</li>
                   </ul>
                 </div>
               </div>
+                <Status status={props.status} updateStatus={props.updateStatus}/>
             </div>
     );
 }

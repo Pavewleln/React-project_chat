@@ -6,5 +6,12 @@ export const profileApi ={
             .then(response => {
                 return response.data
             })
+    },
+    getStatus(id){
+        return instance.get(`profile/status/` + id)
+    },
+    updateStatus(status){
+        return instance.put(`profile/status/`, {status: status})
     }
+
 }
