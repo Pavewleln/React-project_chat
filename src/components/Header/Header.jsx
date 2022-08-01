@@ -3,6 +3,7 @@ import s from './Header.module.css';
 import logo from '../../img/logo.png';
 import {NavLink} from "react-router-dom";
 const Header = (props) =>{
+
     return(
         <header className={s.header}>
             <div className={s.headerBlock}>
@@ -10,7 +11,9 @@ const Header = (props) =>{
                 <h1>НеВКонтакте</h1>
             </div>
             <div className={s.loginBlock}>
-                {props.isAuth ? props.login : <NavLink className={s.item} to={'/login'}>Login</NavLink>}
+                {props.isAuth
+                    ? <div className={s.item}>{props.login} <button onClick={props.LogoutThunk}>Выйти</button></div>
+                    : <NavLink className={s.item} to={'/login'}>Login</NavLink>}
             </div>
         </header>
     );

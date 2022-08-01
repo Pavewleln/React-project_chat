@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-    addPost, getStatus, profileInfoThunk, setUserProfile, updateNewPostText, updateStatus,
+    addPost, getStatus, profileInfoThunk, setUserProfile, updateStatus,
 } from "../../redux/profile-reducer";
 import {connect} from "react-redux";
 import Profile from "./Profile";
-import {Navigate, useParams} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import withRouter from "../../hoc/withRoute";
 import {compose} from "redux";
@@ -14,7 +14,10 @@ class ProfileComponent extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 25097;
+            userId = this.props.authorizedUserId;
+            if(!userId){
+                this.props.history.push("/login")
+            }
         }
         this.props.profileInfoThunk(userId);
         this.props.getStatus(userId);
@@ -40,12 +43,14 @@ let mapStateToProps = (state) => {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText,
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.userId,
+        isAuth: state.auth.isAuth
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {updateNewPostText, addPost, setUserProfile, profileInfoThunk, getStatus, updateStatus}),
+    connect(mapStateToProps, {addPost, setUserProfile, profileInfoThunk, getStatus, updateStatus}),
     withRouter,
     withAuthRedirect,
 )(ProfileComponent);

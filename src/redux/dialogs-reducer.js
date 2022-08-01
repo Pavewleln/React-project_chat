@@ -16,8 +16,7 @@ let initialState = {
         {id: 2, message: "Привет! Отлично! А у тебя?"},
         {id: 3, message: "И у меня все хорошо"},
         {id: 4, message: "Это хорошо, что хорошо"}
-    ],
-    newMessage: 'yes'
+    ]
 }
 
 const dialogsReducer = (state = initialState, action) =>{
@@ -26,13 +25,11 @@ const dialogsReducer = (state = initialState, action) =>{
         case("AddMessage"):
             let newMessageText = {
                 id: 5,
-                message: state.newMessage
+                message: action.newMessage
             };
             return {
                 ...state,
-                // messages: [...state.messages],
-                dialogsMessage: [...state.dialogsMessage, newMessageText],
-                newMessage: '',
+                dialogsMessage: [...state.dialogsMessage, newMessageText]
             }
             break;
         case("UpdateNewMessage"):
@@ -45,16 +42,10 @@ const dialogsReducer = (state = initialState, action) =>{
     return state;
 }
 
-export const addPost = () =>{
+export const addMessage = (newMessage) =>{
     return{
-        type:'AddMessage'
-    }
-}
-
-export const updateNewMessage = (text) =>{
-    return{
-        type:'UpdateNewMessage',
-        newText: text
+        type:'AddMessage',
+        newMessage
     }
 }
 

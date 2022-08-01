@@ -39,7 +39,7 @@
     margin: 15px 5px;
     width: 90%;
 }
-.sendMessages{
+.messageInput{
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
@@ -47,24 +47,24 @@
     bottom: 5px;
     width: 97%;
 }
-.sendMessages textarea{
-    width: 85%;
+.messageInput textarea{
+    width: 500px;
     resize: none;
     border-radius: 5px;
     padding: 5px;
     border: 1px solid aqua;
 }
-.sendMessages textarea::-webkit-scrollbar {
+.messageInput textarea::-webkit-scrollbar {
     height: 5px;
     width: 5px;
     cursor: pointer;
 }
-.sendMessages textarea::-webkit-scrollbar-thumb{
+.messageInput textarea::-webkit-scrollbar-thumb{
     background: rgb(156, 156, 197);
     border-radius: 10px;
 
 }
-.sendMessages button{
+.messageInput button{
     width: 11%;
     background: aqua;
     border-radius: 5px;

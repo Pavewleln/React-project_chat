@@ -1,16 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
-import {NavLink, Navigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, requiredField} from "../../utils/validators/validators";
+import {Textarea} from "../common/FomrsControls/FormsControls";
 
-const DialogItem = (props) =>{
+const DialogItem = (props) => {
     let path = '/dialogs/' + props.id;
-    return(
+    return (
         <li className={s.item}><NavLink to={path}>{props.name}</NavLink></li>
     );
 };
 
-const Message = (props) =>{
-    return(
+const Message = (props) => {
+    return (
         <li className={s.message_item}>{props.message}</li>
     );
 }
@@ -21,17 +24,24 @@ const Dialogs = (props) => {
 
     let messageElements = props.dialogsMessage.map(m => <Message key={m.id} message={m.message} className={s.link}/>)
 
-    let NewMessage = React.createRef();
-
-    let addPost = () => {
-        props.addPost();
-    };
-
-    const messageChange = () =>{
-        let text = NewMessage.current.value;
-        props.updateNewMessage(text)
+    const AddNewMessage = (values) => {
+        props.addMessage(values.newMessage)
     }
 
+    let maxLength300 = maxLengthCreator(300)
+
+    const AddMessageForm = (props) =>{
+        return(
+            <form onSubmit={props.handleSubmit}>
+                <div className={s.messageInput}>
+                    <Field component={Textarea} name="newMessage" placeholder="Напишите сообщение" validate={[requiredField, maxLength300]}/>
+                    <button></button>
+                </div>
+            </form>
+        )
+    }
+
+    const AddMessageReduxForm = reduxForm({form: "dialogsAddMessage"})(AddMessageForm)
 
     return (
         <div className={s.dialogs}>
@@ -44,16 +54,10 @@ const Dialogs = (props) => {
                 <ul>
                     {messageElements}
                 </ul>
-                <div className={s.sendMessages}>
-                    <textarea
-                        onChange={messageChange}
-                        value={props.newPostText}
-                        ref={NewMessage}
-                    />
-                    <button onClick={addPost}></button>
-                </div>
+                <AddMessageReduxForm onSubmit={AddNewMessage}/>
             </div>
         </div>
     );
 };
+
 export default Dialogs;

@@ -3,11 +3,18 @@ import {instance} from "./instance";
 
 
 export const HeaderApi = {
-    loginApi() {
+    meApi() {
         return instance.get(`auth/me`)
             .then(response => {
                 return response.data
             })
-    }
-
+    },
+    loginApi(email, password, rememberMe = false) {
+        return instance.post(`auth/login`, {
+            email, password, rememberMe
+        })
+    },
+    logoutApi() {
+        return instance.delete(`auth/login`)
+    },
 }
