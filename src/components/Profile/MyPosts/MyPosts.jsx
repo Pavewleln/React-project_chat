@@ -1,8 +1,7 @@
-import React from "react";
+import {memo} from "react";
 import s from './MyPosts.module.css';
 
-const MyPosts = (props) =>{
-
+const MyPosts = memo((props) =>{
     return(
         <div className={s.container}>
             <div className={s.block}>
@@ -25,6 +24,6 @@ const MyPosts = (props) =>{
             
         </div> 
     ); 
-};
+});
 
 export default MyPosts;

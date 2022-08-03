@@ -33,40 +33,34 @@ export const toggleIsFetching = (isFetching) => {
 }
 
 export const authLoginThunk = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        HeaderApi.meApi()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(toggleIsFetching(false));
-                    let {id, email, login} = data.data;
-                    dispatch(setAuthUserData(id, email, login, true));
-                }
-            });
+        let data = await HeaderApi.meApi()
+        if (data.resultCode === 0) {
+            dispatch(toggleIsFetching(false));
+            let {id, email, login} = data.data;
+            dispatch(setAuthUserData(id, email, login, true));
+        }
     }
 }
 export const LoginThunk = (email, password, rememberMe) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        HeaderApi.loginApi(email, password, rememberMe)
-            .then(response => {
-                        dispatch(authLoginThunk());
-                    if(response.data.resultCode !== 0){
-                        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-                        dispatch(stopSubmit("login", {_error: message}));
-                    }
-            });
+        let response = await HeaderApi.loginApi(email, password, rememberMe)
+        dispatch(authLoginThunk());
+        if (response.data.resultCode !== 0) {
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+            dispatch(stopSubmit("login", {_error: message}));
+        }
     }
 }
 export const LogoutThunk = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        HeaderApi.logoutApi()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuthUserData(null, null, null, false));
-                }
-            });
+        let response = await HeaderApi.logoutApi()
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false));
+        }
     }
 }
 

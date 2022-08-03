@@ -110,27 +110,23 @@ export const onPageChangedThunk = (pageNumber, pageSize) => {
     }
 }
 export const follow = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, id))
-        UsersApi.followApi(id)
-            .then(data => {
-                if (data.resultCode == 0) {
-                    dispatch(followSuccess(id))
-                }
-                dispatch(toggleFollowingProgress(false, id))
-            })
+        let data = await UsersApi.followApi(id)
+        if (data.resultCode == 0) {
+            dispatch(followSuccess(id))
+        }
+        dispatch(toggleFollowingProgress(false, id))
     }
 }
 export const unfollow = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, id))
-        UsersApi.unfollowApi(id)
-            .then(data => {
-                if (data.resultCode == 0) {
-                    dispatch(unfollowSuccess(id))
-                }
-                dispatch(toggleFollowingProgress(false, id))
-            })
+        let data = await UsersApi.unfollowApi(id)
+        if (data.resultCode == 0) {
+            dispatch(unfollowSuccess(id))
+        }
+        dispatch(toggleFollowingProgress(false, id))
     }
 }
 

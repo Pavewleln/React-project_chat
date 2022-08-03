@@ -1,9 +1,10 @@
 import {profileApi} from "../api/profileApi";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = "SET_STATUS";
+const DELETE_POST = "DELETE_POST";
+
 let initialState = {
     posts: [
         {
@@ -26,7 +27,7 @@ let initialState = {
         }
     ],
     profile: null,
-    status: ''
+    status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -56,41 +57,42 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status
             }
         }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id != action.postId)
+            }
+        }
         default:
             return state;
     }
 }
 
 export const addPost = (NewPostText) => ({type: ADD_POST, NewPostText})
+export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const setUserProfile = (profile) =>
     ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) =>
     ({type: SET_STATUS, status})
 
 export const profileInfoThunk = (id) => {
-    return (dispatch) => {
-        profileApi.profileInfo(id)
-            .then(data => {
-                dispatch(setUserProfile(data))
-            })
+    return async (dispatch) => {
+        let data = await profileApi.profileInfo(id)
+        dispatch(setUserProfile(data))
     }
 }
 export const getStatus = (id) => {
-    return (dispatch) => {
-        profileApi.getStatus(id)
-            .then(response => {
-                dispatch(setStatus(response.data))
-            })
+    return async (dispatch) => {
+        let response = await profileApi.getStatus(id)
+        dispatch(setStatus(response.data))
     }
 }
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileApi.updateStatus(status)
-            .then(response => {
-                if(response.data.resultCode === 0){
-                    dispatch(setStatus(status))
-                }
-            })
+    return async (dispatch) => {
+        let response = await profileApi.updateStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status))
+        }
     }
 }
 

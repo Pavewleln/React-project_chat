@@ -25,12 +25,9 @@ export const initializedSuccess = () => {
     }
 }
 
-export const initializeAppThunk = () => (dispatch) => {
+export const initializeAppThunk = () => async (dispatch) => {
     let promise = dispatch(authLoginThunk());
-
-    Promise.all([promise])
-        .then(() => {
-            dispatch(initializedSuccess());
-        });
+    await Promise.all([promise])
+    dispatch(initializedSuccess());
 }
 export default appReducer;
