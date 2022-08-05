@@ -1,21 +1,17 @@
 {
   "files": {
-    "main.css": "/React-project_chat/static/css/main.efdfacb5.css",
-    "main.js": "/React-project_chat/static/js/main.bb7081a8.js",
-    "static/css/254.e412cee5.chunk.css": "/React-project_chat/static/css/254.e412cee5.chunk.css",
-    "static/js/254.f05cf500.chunk.js": "/React-project_chat/static/js/254.f05cf500.chunk.js",
+    "main.css": "/React-project_chat/static/css/main.66c5b07c.css",
+    "main.js": "/React-project_chat/static/js/main.a56cd2b1.js",
     "static/js/787.dcdc6d36.chunk.js": "/React-project_chat/static/js/787.dcdc6d36.chunk.js",
     "static/media/preloader-users.gif": "/React-project_chat/static/media/preloader-users.d46b92f6b520defebb96.gif",
     "static/media/logo.png": "/React-project_chat/static/media/logo.a239304943887cc0e04c.png",
     "index.html": "/React-project_chat/index.html",
-    "main.efdfacb5.css.map": "/React-project_chat/static/css/main.efdfacb5.css.map",
-    "main.bb7081a8.js.map": "/React-project_chat/static/js/main.bb7081a8.js.map",
-    "254.e412cee5.chunk.css.map": "/React-project_chat/static/css/254.e412cee5.chunk.css.map",
-    "254.f05cf500.chunk.js.map": "/React-project_chat/static/js/254.f05cf500.chunk.js.map",
+    "main.66c5b07c.css.map": "/React-project_chat/static/css/main.66c5b07c.css.map",
+    "main.a56cd2b1.js.map": "/React-project_chat/static/js/main.a56cd2b1.js.map",
     "787.dcdc6d36.chunk.js.map": "/React-project_chat/static/js/787.dcdc6d36.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.efdfacb5.css",
-    "static/js/main.bb7081a8.js"
+    "static/css/main.66c5b07c.css",
+    "static/js/main.a56cd2b1.js"
   ]
 }
