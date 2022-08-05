@@ -1,0 +1,39 @@
+.profile{
+    margin-top: 5px;
+    display: flex;
+  }
+  .avatar{
+    margin-left: 10px;
+    width: 100px;
+    height: 100px;
+  }
+  .avatar img{
+    width: 100px;
+    height: auto;
+    margin-right: 30px;
+  }
+  .description{
+    font-size: 18px;
+  }
+  .name{
+    font-size: 22px;
+    margin-left: 40px;
+  }
+  
+.downloadFile {
+  margin-bottom: 45px;
+  display: flex;
+  align-items: center;
+}
+.downloadInput {
+  display: none;
+}
+.downloadLabel:hover {
+  text-decoration: underline;
+}
+.downloadLabel {
+  color: blue;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 10px;
+}

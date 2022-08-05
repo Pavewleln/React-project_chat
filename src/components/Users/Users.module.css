@@ -1,0 +1,82 @@
+.h_title{
+    text-align: center;
+    color: blue;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.pagination{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    overflow-x: auto;
+}
+.pagination span{
+    margin: 0 5px;
+    cursor: pointer;
+}
+.checked{
+    font-weight: bold;
+}
+.users{
+    width: 68%;
+    height: auto;
+}
+.photo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+.photo img{
+    margin: auto;
+    width: 50px;
+    height: auto;
+}
+.user{
+    padding: 0 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+    border: 1px solid rgb(156, 156, 197);
+    width: 90%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title{
+    width: 30%;
+}
+.description{
+    width: 40%;
+}
+.location{
+    width: 30%;
+}
+.follow{
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid rgb(156, 156, 197);
+    color: white;
+    background: rgb(156, 156, 197);
+    transition: all 0.5s ease;
+}
+.unfollow{
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid rgb(156, 156, 197);
+    color: black;
+    background: white;
+    transition: all 0.2s ease;
+}
+.unfollow:hover{
+    opacity: 0.7;
+}
+.follow:hover{
+    opacity: 0.7;
+}
+.name{
+    /*color: rgb(156, 156, 197);*/
+    font-size: 18px;
+}
