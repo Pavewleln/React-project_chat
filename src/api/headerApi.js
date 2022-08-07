@@ -9,9 +9,9 @@ export const HeaderApi = {
                 return response.data
             })
     },
-    loginApi(email, password, rememberMe = false) {
+    loginApi(email, password, rememberMe = false, captcha = null) {
         return instance.post(`auth/login`, {
-            email, password, rememberMe
+            email, password, rememberMe, captcha
         })
     },
     logoutApi() {
