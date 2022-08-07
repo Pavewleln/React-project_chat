@@ -1,34 +1,57 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import s from './ProfileInfo.module.css';
 import StatusWithHooks from "./Status/statusWithHooks";
-const ProfileInfo = (props) =>{
-    return(
+import ProfileData from "./ProfileData/ProfileData";
+import ProfileDataReduxForm from "./ProfileData/ProfileDataForm";
+
+const ProfileInfo = (props, {profile}) => {
+
+    const onMainProfilePhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }
+    }
+
+    let [editMode, setEditMode] = useState(false);
+
+    const activateEditMode = () =>{
+        setEditMode(true);
+    }
+
+    const deActivateEditMode = () =>{
+        setEditMode(false);
+    }
+
+    const onSubmit = (formData) =>{
+        props.saveProfile(formData).then(() =>{
+            deActivateEditMode();
+        })
+    }
+
+    return (
         <div className={s.profile}>
-              <div className={s.avatar}>
+            <div className={s.avatar}>
                 <img src={props.srcImg} alt={props.alt}/>
-              </div>
-              <div className={s.description}>
-                <div className={s.name}>
-                  {props.name}
-                </div>
-                <div className={s.data}>
-                  <ul>
-                    <li>Контакты</li>
-                    <li>Facebook: {props.facebook}</li>
-                    <li>website: {props.website}</li>
-                    <li>vk: {props.vk}</li>
-                    <li>twitter: {props.twitter}</li>
-                    <li>instagram: {props.instagram}</li>
-                    <li>youtube: {props.youtube}</li>
-                    <li>github: {props.github}</li>
-                    <li>mainLink: {props.mainLink}</li>
-                    <li>Работа: {props.lookingForAJob}</li>
-                    <li>Описание: {props.lookingForAJobDescription}</li>
-                  </ul>
-                </div>
-              </div>
-                <StatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                {props.isOwner
+                    ? <div className={s.downloadFile}>
+                        <input className={s.downloadInput} type="file" name="file" id="inputfile"
+                               onChange={onMainProfilePhotoSelected}/>
+                        <label className={s.downloadLabel} htmlFor="inputfile">Загрузить фото</label>
+                    </div>
+                    : ""}
             </div>
+            {!editMode
+                ? <div>
+                    <ProfileData profile={profile} {...props}/>
+                    {props.isOwner ? <button className={s.buttonProfile} onClick={activateEditMode}>Обновить профиль</button> : ""}
+                    </div>
+                : <div>
+                    <ProfileDataReduxForm initialValues={profile} profile={profile}  onSubmit={onSubmit}/>
+                    {/*<button className={s.buttonProfile} onClick={deActivateEditMode}>Сохранить профиль</button>*/}
+                </div>
+            }
+            <StatusWithHooks status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner}/>
+        </div>
     );
 }
 export default ProfileInfo;

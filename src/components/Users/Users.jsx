@@ -3,24 +3,15 @@ import s from './Users.module.css';
 import photoUsersDefault from '../../img/Users/default-users-photo.png';
 import {NavLink} from "react-router-dom";
 import Preloader from "../common/preloader";
+import Paginate from "./Paginate";
 
 
 let Users = (props) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
     return (<div className={s.users}>
         <h3 className={s.h_title}>Пользователи сети</h3>
         {/*Пагинация*/}
-        <div className={s.pagination}>
-            {pages.map(p => {
-                return (<span key={p.id} className={(props.currentPage) === p && s.checked} onClick={(e) => {props.onPageChanged(p)}}>{p}</span>);
-            })}
-        </div>
+        <Paginate {...props}/>
         {/*Пользователи*/}
         {props.isFetching ? <Preloader/> :
         props.users.map((u) => {
@@ -30,7 +21,6 @@ let Users = (props) => {
                         <NavLink to={'/profile/' + u.id}>
                             <img src={u.photos.small != null ? u.photos.small : photoUsersDefault} alt='Картинка'/>
                         </NavLink>
-
                     </div>
                     <div className={s.following}>
                         {u.followed

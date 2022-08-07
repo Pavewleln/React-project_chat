@@ -55,6 +55,9 @@ const Profile = (props) => {
                          srcImg={props.profile.photos.large}
                          status={props.status}
                          updateStatus={props.updateStatus}
+                         isOwner={props.isOwner}
+                         savePhoto={props.savePhoto}
+                         saveProfile={props.saveProfile}
             ></ProfileInfo>
             <div className={s.post}>
                 <h3 className={s.title}>Мои посты</h3>

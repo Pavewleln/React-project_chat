@@ -25,7 +25,7 @@ const StatusWithHooks = (props) => {
             {!editMode
                 ? <div>
                     <div>status: {!props.status ? "Нет статуса" : props.status}</div>
-                    <button onClick={activateEditMode}>Изменить статус</button>
+                    {props.isOwner ? <button onClick={activateEditMode}>Изменить статус</button> : ""}
                 </div>
 
                 : <div>

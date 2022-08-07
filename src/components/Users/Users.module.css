@@ -80,3 +80,12 @@
     /*color: rgb(156, 156, 197);*/
     font-size: 18px;
 }
+
+.next, .prev{
+    border-radius: 5px;
+    border:1px solid black;
+    background: white;
+    color: blue;
+    padding: 5px 10px;
+    cursor: pointer;
+}
