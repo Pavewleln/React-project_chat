@@ -1,9 +1,6 @@
-import {HeaderApi} from "../api/headerApi";
-import {stopSubmit} from "redux-form";
 import {authLoginThunk} from "./auth-reducer";
 
 const SET_INITIALIZED_SUCCESS = 'SET_INITIALIZED_SUCCESS'
-const INITIALIZE = 'INITIALIZE'
 
 let initialState = {
     initialized: false

@@ -1,5 +1,4 @@
 import {HeaderApi} from "../api/headerApi";
-import {stopSubmit} from "redux-form";
 import {SecurityApi} from "../api/SecurityApi";
 
 const SET_USER_DATA = 'SET_USER_DATA'
@@ -65,7 +64,7 @@ export const LoginThunk = (email, password, rememberMe, captcha) => {
                 dispatch(GetCaptchaUrl());
             }
             let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-            dispatch(stopSubmit("login", {_error: message}));
+            return {_error: message};
 
         }
     }
@@ -74,7 +73,6 @@ export const GetCaptchaUrl = () => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     const response = await SecurityApi.getCaptchaUrl()
     const captchaUrl = response.data.url
-
     dispatch(getCaptchaUrlSuccess(captchaUrl));
 }
 export const LogoutThunk = () => {
