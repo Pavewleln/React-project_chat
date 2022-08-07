@@ -36,7 +36,7 @@ class App extends Component {
                             <Suspense fallback={<Preloader/>}>
                                 <Routes>
                                     <Route path='/*' element={<ProfileContainer/>}/>
-                                    <Route path='/profile' element={<ProfileContainer/>}/>
+                                    <Route path='/profile/' element={<ProfileContainer/>}/>
                                     <Route path='/profile/:userId' element={<ProfileContainer/>}/>
                                     <Route path='/login' element={<Login/>}/>
                                     <Route path='/dialogs/*' element={<DialogsContainer/>}/>

@@ -47,7 +47,7 @@ const ProfileInfo = (props, {profile}) => {
                     </div>
                 : <div>
                     <ProfileDataReduxForm initialValues={profile} profile={profile}  onSubmit={onSubmit}/>
-                    {/*<button className={s.buttonProfile} onClick={deActivateEditMode}>Сохранить профиль</button>*/}
+                    <button className={s.buttonProfile} onClick={deActivateEditMode}>Выйти из режима редактирования</button>
                 </div>
             }
             <StatusWithHooks status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner}/>
