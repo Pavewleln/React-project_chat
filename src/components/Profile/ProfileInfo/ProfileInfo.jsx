@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './ProfileInfo.module.css';
 import StatusWithHooks from "./Status/statusWithHooks";
 import ProfileData from "./ProfileData/ProfileData";
-import ProfileDataReduxForm from "./ProfileData/ProfileDataForm";
+import ProfileDataForm from "./ProfileData/ProfileDataForm";
 
 const ProfileInfo = (props, {profile}) => {
 
@@ -46,7 +46,7 @@ const ProfileInfo = (props, {profile}) => {
                     {props.isOwner ? <button className={s.buttonProfile} onClick={activateEditMode}>Обновить профиль</button> : ""}
                     </div>
                 : <div>
-                    <ProfileDataReduxForm initialValues={profile} profile={profile}  onSubmit={onSubmit}/>
+                    <ProfileDataForm profile={profile} onSubmit={onSubmit}/>
                     <button className={s.buttonProfile} onClick={deActivateEditMode}>Выйти из режима редактирования</button>
                 </div>
             }

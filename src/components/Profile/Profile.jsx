@@ -4,11 +4,11 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileBackground from './ProfileBackground/ProfileBackground';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Preloader from "../common/preloader";
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, requiredField} from "../../utils/validators/validators";
-import {Textarea} from "../common/FomrsControls/FormsControls";
+import {useForm} from "react-hook-form";
+
 
 const Profile = (props) => {
+
     let postsElements = props.posts.map((p) => <MyPosts key={p.id} message={p.message} likes={p.likes}
                                                         dislikes={p.dislikes} profile={props.profile}/>)
 
@@ -20,21 +20,29 @@ const Profile = (props) => {
         return (<Preloader/>);
     }
 
-    let maxLength300 = maxLengthCreator(300)
-
 
     const AddNewPostText = (props) => {
+
+        const {
+            handleSubmit,
+            register,
+            formState: {
+                errors
+            }
+        } = useForm({
+            mode: "onSubmit"
+        })
+
         return (
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit(props.onSubmit)}>
                 <div className={s.postInput}>
-                    <Field component={Textarea} validate={[requiredField, maxLength300]} name="NewPostText" placeholder='Что у тебя нового?'/>
+                    <input className={s.postInputTextarea} {...register('NewPostText', {required: 'Сначала что-нибудь напишите'})}/>
+                    {errors?.NewPostText && <span className={s.textError}> {errors.NewPostText.message || "error!"}</span>}
                     <button className={s.send}>Отправить</button>
                 </div>
             </form>
         )
     }
-
-    const AddNewPostTextReduxForm = reduxForm({form:"profileNewPost"})(AddNewPostText)
 
     return (<div className={s.content}>
         <ProfileBackground
@@ -61,7 +69,7 @@ const Profile = (props) => {
             ></ProfileInfo>
             <div className={s.post}>
                 <h3 className={s.title}>Мои посты</h3>
-                <AddNewPostTextReduxForm onSubmit={onAddPost}/>
+                <AddNewPostText onSubmit={onAddPost}/>
                 {postsElements}
             </div>
         </div>

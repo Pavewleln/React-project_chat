@@ -14,7 +14,7 @@
   width: 90%;
   margin-bottom: 20px;
 }
-.postInput textarea{
+.postInputTextarea{
   max-width: calc(100% - 20px);
   min-width: calc(100% - 20px);
   /* width: calc(100% - 20px); */
@@ -33,4 +33,7 @@
   color: white;
   display: flex;
   margin: 0 0 0 auto;
+}
+.textError{
+  color: red;
 }

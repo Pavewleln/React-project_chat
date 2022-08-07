@@ -47,27 +47,30 @@
     bottom: 5px;
     width: 97%;
 }
-.messageInput textarea{
+.messageInputTextarea{
     width: 500px;
     resize: none;
     border-radius: 5px;
     padding: 5px;
     border: 1px solid aqua;
 }
-.messageInput textarea::-webkit-scrollbar {
+.messageInputTextarea::-webkit-scrollbar {
     height: 5px;
     width: 5px;
     cursor: pointer;
 }
-.messageInput textarea::-webkit-scrollbar-thumb{
+.messageInputTextarea::-webkit-scrollbar-thumb{
     background: rgb(156, 156, 197);
     border-radius: 10px;
 
 }
-.messageInput button{
+.messageInputButton{
     width: 11%;
     background: aqua;
     border-radius: 5px;
     border:1px solid blue;
     cursor: pointer;
+}
+.textError{
+    color: red;
 }

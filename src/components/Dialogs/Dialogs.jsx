@@ -1,9 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, requiredField} from "../../utils/validators/validators";
-import {Textarea} from "../common/FomrsControls/FormsControls";
+import {useForm} from "react-hook-form";
 
 const DialogItem = (props) => {
     let path = '/dialogs/' + props.id;
@@ -20,28 +18,39 @@ const Message = (props) => {
 
 const Dialogs = (props) => {
 
+    const {
+        handleSubmit,
+        register,
+        formState: {
+            errors
+        },
+        reset
+    } = useForm({
+        mode: "onSubmit"
+    })
+
+
+
     let dialogElements = props.dialogsName.map(d => <DialogItem name={d.name} key={d.id}/>);
 
     let messageElements = props.dialogsMessage.map(m => <Message key={m.id} message={m.message} className={s.link}/>)
 
     const AddNewMessage = (values) => {
         props.addMessage(values.newMessage)
+        reset()
     }
-
-    let maxLength300 = maxLengthCreator(300)
 
     const AddMessageForm = (props) =>{
         return(
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit(props.onSubmit)}>
                 <div className={s.messageInput}>
-                    <Field component={Textarea} name="newMessage" placeholder="Напишите сообщение" validate={[requiredField, maxLength300]}/>
-                    <button></button>
+                    <input className={s.messageInputTextarea} {...register('newMessage', {required: 'Сначала что-нибудь напишите'})}/>
+                    {errors?.newMessage && <span className={s.textError}> {errors.newMessage.message || "error!"}</span>}
+                    <button className={s.messageInputButton}></button>
                 </div>
             </form>
         )
     }
-
-    const AddMessageReduxForm = reduxForm({form: "dialogsAddMessage"})(AddMessageForm)
 
     return (
         <div className={s.dialogs}>
@@ -54,7 +63,7 @@ const Dialogs = (props) => {
                 <ul>
                     {messageElements}
                 </ul>
-                <AddMessageReduxForm onSubmit={AddNewMessage}/>
+                <AddMessageForm onSubmit={AddNewMessage}/>
             </div>
         </div>
     );
