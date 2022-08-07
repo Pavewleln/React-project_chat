@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/React-project_chat/static/css/main.09097eeb.css",
-    "main.js": "/React-project_chat/static/js/main.d84675d6.js",
-    "static/css/765.c3010519.chunk.css": "/React-project_chat/static/css/765.c3010519.chunk.css",
-    "static/js/765.1b0d63c5.chunk.js": "/React-project_chat/static/js/765.1b0d63c5.chunk.js",
+    "main.css": "/React-project_chat/static/css/main.f43017c8.css",
+    "main.js": "/React-project_chat/static/js/main.907fd250.js",
+    "static/css/765.d16729e6.chunk.css": "/React-project_chat/static/css/765.d16729e6.chunk.css",
+    "static/js/765.ce9ce225.chunk.js": "/React-project_chat/static/js/765.ce9ce225.chunk.js",
     "static/js/787.dcdc6d36.chunk.js": "/React-project_chat/static/js/787.dcdc6d36.chunk.js",
     "static/media/preloader-users.gif": "/React-project_chat/static/media/preloader-users.d46b92f6b520defebb96.gif",
     "static/media/logo.png": "/React-project_chat/static/media/logo.a239304943887cc0e04c.png",
     "index.html": "/React-project_chat/index.html",
-    "main.09097eeb.css.map": "/React-project_chat/static/css/main.09097eeb.css.map",
-    "main.d84675d6.js.map": "/React-project_chat/static/js/main.d84675d6.js.map",
-    "765.c3010519.chunk.css.map": "/React-project_chat/static/css/765.c3010519.chunk.css.map",
-    "765.1b0d63c5.chunk.js.map": "/React-project_chat/static/js/765.1b0d63c5.chunk.js.map",
+    "main.f43017c8.css.map": "/React-project_chat/static/css/main.f43017c8.css.map",
+    "main.907fd250.js.map": "/React-project_chat/static/js/main.907fd250.js.map",
+    "765.d16729e6.chunk.css.map": "/React-project_chat/static/css/765.d16729e6.chunk.css.map",
+    "765.ce9ce225.chunk.js.map": "/React-project_chat/static/js/765.ce9ce225.chunk.js.map",
     "787.dcdc6d36.chunk.js.map": "/React-project_chat/static/js/787.dcdc6d36.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.09097eeb.css",
-    "static/js/main.d84675d6.js"
+    "static/css/main.f43017c8.css",
+    "static/js/main.907fd250.js"
   ]
 }
