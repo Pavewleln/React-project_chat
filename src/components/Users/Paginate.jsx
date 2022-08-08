@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import s from "./Users.module.css";
+import cn from 'classnames'
 
 function Paginate(props,
                   currentPage = 1,
@@ -28,7 +29,7 @@ function Paginate(props,
             {pages
                 .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
                 .map(p => {
-                return (<span key={p.id} className={(props.currentPage) === p && s.checked} onClick={(e) => {props.onPageChanged(p)}}>{p}</span>);
+                return (<span key={p} className={cn((props.currentPage) === p && s.checked)} onClick={(e) => {props.onPageChanged(p)}}>{p}</span>);
             })}
 
             { portionCount > portionNumber &&
