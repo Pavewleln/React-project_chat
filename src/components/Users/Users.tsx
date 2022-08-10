@@ -1,20 +1,32 @@
-import React from 'react';
-import s from './Users.module.css';
+import React, {FC} from 'react';
+import s from './users.module.css';
 import photoUsersDefault from '../../img/Users/default-users-photo.png';
 import {NavLink} from "react-router-dom";
 import Preloader from "../common/preloader";
 import Paginate from "./Paginate";
+import {usersType} from "../../types/types";
 
+type PropsType = {
+    users: Array<usersType>
+    followingInProgress: Array<number>
+    isFetching: boolean
+    follow: (id: number) => void
+    unfollow: (id: number) => void
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+}
 
-let Users = (props) => {
+const Users: FC<PropsType> = ({users, totalUsersCount, pageSize, currentPage, onPageChanged, ...props}) => {
 
     return (<div className={s.users}>
         <h3 className={s.h_title}>Пользователи сети</h3>
         {/*Пагинация*/}
-        <Paginate {...props}/>
+        <Paginate currentPage={currentPage} onPageChanged={onPageChanged} totalUsersCount={totalUsersCount} pageSize={pageSize}/>
         {/*Пользователи*/}
         {props.isFetching ? <Preloader/> :
-        props.users.map((u) => {
+        users.map((u) => {
             return (<div className={s.user} key={u.id}>
                 <div className={s.title}>
                     <div className={s.photo}>

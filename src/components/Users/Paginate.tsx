@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
-import s from "./Users.module.css";
+import React, {FC, useState} from 'react';
+import s from "./users.module.css";
 import cn from 'classnames'
 
-function Paginate(props,
-                  currentPage = 1,
-                  onPageChanged = x => x,
-                  portionSize = 10) {
+type PropsType = {
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+    portionSize?: number
+}
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+const Paginate: FC<PropsType> = ({totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+
+    let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -29,7 +34,7 @@ function Paginate(props,
             {pages
                 .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
                 .map(p => {
-                return (<span key={p} className={cn((props.currentPage) === p && s.checked)} onClick={(e) => {props.onPageChanged(p)}}>{p}</span>);
+                return (<span key={p} className={cn((currentPage) === p && s.checked)} onClick={(e) => {onPageChanged(p)}}>{p}</span>);
             })}
 
             { portionCount > portionNumber &&

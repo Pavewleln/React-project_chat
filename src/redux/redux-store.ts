@@ -7,7 +7,7 @@ import authReducer from "./auth-reducer";
 import thunkMiddleware from 'redux-thunk';
 import appReducer from "./app-reducer";
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     navbar: navbarReducer,
@@ -16,6 +16,10 @@ let reducers = combineReducers({
     app: appReducer
     });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+type rootReducerType = typeof rootReducer;
+export type appStateType = ReturnType<rootReducerType>
+
+
+let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store;
