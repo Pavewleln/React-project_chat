@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/React-project_chat/static/css/main.55717cdb.css",
-    "main.js": "/React-project_chat/static/js/main.33c0dbd7.js",
+    "main.css": "/React-project_chat/static/css/main.64f5784f.css",
+    "main.js": "/React-project_chat/static/js/main.aa696113.js",
     "static/js/787.dcdc6d36.chunk.js": "/React-project_chat/static/js/787.dcdc6d36.chunk.js",
     "static/media/preloader-users.gif": "/React-project_chat/static/media/preloader-users.d46b92f6b520defebb96.gif",
     "static/media/logo.png": "/React-project_chat/static/media/logo.a239304943887cc0e04c.png",
     "index.html": "/React-project_chat/index.html",
-    "main.55717cdb.css.map": "/React-project_chat/static/css/main.55717cdb.css.map",
-    "main.33c0dbd7.js.map": "/React-project_chat/static/js/main.33c0dbd7.js.map",
+    "main.64f5784f.css.map": "/React-project_chat/static/css/main.64f5784f.css.map",
+    "main.aa696113.js.map": "/React-project_chat/static/js/main.aa696113.js.map",
     "787.dcdc6d36.chunk.js.map": "/React-project_chat/static/js/787.dcdc6d36.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.55717cdb.css",
-    "static/js/main.33c0dbd7.js"
+    "static/css/main.64f5784f.css",
+    "static/js/main.aa696113.js"
   ]
 }
